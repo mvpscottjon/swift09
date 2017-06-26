@@ -6,6 +6,9 @@
 //  Copyright © 2017年 seven. All rights reserved.
 //
 
+
+
+////******* getter setter
 import Foundation
 
 class MyClass01 {
@@ -39,8 +42,10 @@ class MyClass05 {
         }               //要有return 取值
     
         set{   //可以不要 setter
-//            set(newx){  這個寫法要帶參數
-            newValue
+         newValue
+//            set(newx){  //這個寫法要帶參數
+//                x = newx
+
         }
     }
 }
@@ -54,7 +59,7 @@ class MyClass06 {
 }
 
 
-
+//直接於變數後面加{}賦予 willSet didSet
 class MyClass07 {
     var x = 0 {
         willSet{  //before

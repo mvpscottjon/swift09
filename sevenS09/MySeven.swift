@@ -74,7 +74,7 @@ class Bike {
 
 //******繼承關係
 
-
+//只有一個init
 class Super1 {
     init(){
         print("Super:init()")
@@ -114,7 +114,7 @@ class Sub3 : Super1 {
 
 
 //-----------
-
+//super2 has 多個init;when sub override init ;that won't do super init
 class Super2 {
     init() {print("Super2:init")} //無傳參數為預設建構式
     init(_ : Int) {print("Super2:init(Int)")}
@@ -130,9 +130,10 @@ class Sub4 : Super2 {
 
 
 class Sub5 : Super2 {
+    //when super has inits; if sub want to init ; need to override super's init
     override init(){
        
-          super.init(3)       //super為關鍵字   因parent有三個建構式 所以要選擇一個
+          super.init(3)       //super為關鍵字   因parent有三個建構式 所以一錠要選擇一個來取代 //若指定位置 可先執行
          print("Sub5:init")
     }
     override init(_ :Int) {
@@ -149,7 +150,7 @@ class Sub5 : Super2 {
 
 //====================
 
-
+//super has just one init
 class Super3 {
     init() {
         print("Super3:init()")
@@ -157,6 +158,8 @@ class Super3 {
     }
 
 }
+
+//sub will do himself init and then do super's init
 class Sub6 : Super3 {
     override init() {
         print("doSth")
@@ -169,11 +172,12 @@ class Sub6 : Super3 {
     }
     init( _ : String){
 //        self.init(3) 又去叫init(3) 會無窮迴圈
+        print("String init")
     }
 }
 
 
-
+////HW 
 class TWId {
     var id:String
     
@@ -194,7 +198,7 @@ class TWId {
             print("main logic")
         self.id = "A123456789"
     }
-
+}
 //    init?(_ id:String){
 //        let a = Int(arc4random_uniform(2))
 //        
@@ -208,7 +212,7 @@ class TWId {
         
     
     
-    }
+    
     
     
 //}
@@ -218,7 +222,7 @@ class TWId {
 
 class Super4 {
     init(){print("Super4:init()")}
-  required init(x:Int){  //後面繼承的一定要有這個init
+  required init(x:Int){  //required 後面繼承的一定要有這個init
     print("Suber4:init(Int)")}
 
 }
@@ -232,7 +236,7 @@ class Sub7 : Super4 {
     
         super.init()
     }
-    
+    //super has required init;sub need create one required init
     required init(x: Int) {
         super.init()
     }
